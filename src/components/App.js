@@ -128,10 +128,6 @@ function App() {
     localStorage.removeItem('jwt');
   }
 
-  function handleConfirmationDelete() {
-    setIsConfirmationPopupOpen(true);
-  }
-
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
     
@@ -192,13 +188,11 @@ function App() {
     return apiAuth.registrationUser({email, password})
       .then((res) => {
         setStatusRegistr(true);
-        setTimeout(() => setRegistrConfirmation(true), 0);
         navigate('/signin', {replace: true});
         handleRegisterClick();
       })
       .catch(() => {
         setStatusRegistr(false);
-        setTimeout(() => setRegistrConfirmation(true), 0);
         navigate('/signup', {replace: true});
         handleRegisterClick();
       });
@@ -234,7 +228,6 @@ function App() {
             onCardLike = {handleCardLike}
             onCardDelete = {handleCardDelete}
             cards={cards}
-            onConfirmationDelete={handleConfirmationDelete}
           />
         }>
         </Route>
