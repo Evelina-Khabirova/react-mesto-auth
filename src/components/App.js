@@ -52,7 +52,7 @@ function App() {
   }, []);
 
   function tokenCheck() {
-    const jwt = localStorage.getItem('jwt');
+    const jwt = localStorage.getItem('token');
     if(!jwt) {
       return;
     }
@@ -125,7 +125,7 @@ function App() {
   }
 
   function handleSignOut() {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('token');
   }
 
   function handleCardLike(card) {
